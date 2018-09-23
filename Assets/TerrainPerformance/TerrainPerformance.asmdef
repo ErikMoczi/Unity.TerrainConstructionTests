@@ -1,0 +1,13 @@
+{
+    "name": "TerrainPerformance",
+    "references": [
+        "Unity.PerformanceTesting",
+        "WorkSpace"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

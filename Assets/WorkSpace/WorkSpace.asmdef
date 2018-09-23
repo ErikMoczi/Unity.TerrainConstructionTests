@@ -1,0 +1,12 @@
+﻿{
+    "name": "WorkSpace",
+    "references": [
+        "Unity.PerformanceTesting",
+        "Unity.Mathematics",
+        "Unity.Burst"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
