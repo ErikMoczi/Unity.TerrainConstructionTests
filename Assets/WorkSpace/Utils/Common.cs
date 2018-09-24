@@ -9,18 +9,24 @@ namespace WorkSpace.Utils
         public static float NoiseValue(Vector2 point, NoiseSettings config)
         {
             var frequency = config.Frequency;
-            var value = noise.cnoise(point * frequency);
-            var amplitude = 1f;
-            var range = 1f;
+            var amplitude = config.Amplitude;
+
+            var range = 1f * amplitude;
+            var value = GetNoise(point, frequency, amplitude);
             for (var o = 1; o < config.Octaves; o++)
             {
                 frequency *= config.Lacunarity;
                 amplitude *= config.Persistence;
                 range += amplitude;
-                value += noise.cnoise(point * frequency) * amplitude;
+                value += GetNoise(point, frequency, amplitude);
             }
 
             return value * (1f / range);
+        }
+
+        private static float GetNoise(Vector2 point, float frequency, float amplitude)
+        {
+            return noise.cnoise(point * frequency) * amplitude;
         }
 
         public static Vector2 MiddlePosition(int x, int z, float stepSize, Vector2 offset)

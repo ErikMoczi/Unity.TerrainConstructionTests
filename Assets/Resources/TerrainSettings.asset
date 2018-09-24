@@ -19,4 +19,5 @@ MonoBehaviour:
     _frequency: 1.5
     _octaves: 7
     _lacunarity: 3.5
-    _persistence: 0.15
+    _persistence: 0.17
+    _amplitude: 0.6
