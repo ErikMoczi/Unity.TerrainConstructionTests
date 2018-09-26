@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1cb763f5e1128b41bcfabaf7fdd2b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _autoUpdate: 1
   _terrainCreatorType: 2
   _terrainSettings: {fileID: 11400000, guid: 49621a85fec7cc54d8d2e55ed493627a, type: 2}
 --- !u!114 &1834008042

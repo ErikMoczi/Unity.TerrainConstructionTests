@@ -13,6 +13,16 @@ namespace WorkSpace.Editor
             _terrainProfiler = target as TerrainProfiler;
         }
 
+        private void OnEnable()
+        {
+            Undo.undoRedoPerformed += RefreshCreator;
+        }
+
+        private void OnDisable()
+        {
+            Undo.undoRedoPerformed -= RefreshCreator;
+        }
+
         private void RefreshCreator()
         {
             if (Application.isPlaying)
@@ -23,10 +33,26 @@ namespace WorkSpace.Editor
 
         public override void OnInspectorGUI()
         {
-            DrawDefaultInspector();
-            if (GUILayout.Button("Generate"))
+            using (new EditorGUI.DisabledScope(_terrainProfiler.Working))
             {
-                RefreshCreator();
+                if (_terrainProfiler.AutoUpdate)
+                {
+                    EditorGUI.BeginChangeCheck();
+                    DrawDefaultInspector();
+                    if (EditorGUI.EndChangeCheck() & _terrainProfiler.AutoUpdate)
+                    {
+                        RefreshCreator();
+                    }
+                }
+                else
+                {
+                    DrawDefaultInspector();
+                }
+
+                if (GUILayout.Button("Generate"))
+                {
+                    RefreshCreator();
+                }
             }
         }
     }

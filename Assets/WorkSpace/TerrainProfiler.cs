@@ -11,18 +11,21 @@ namespace WorkSpace
     [RequireComponent(typeof(MainThreadDispatch))]
     public class TerrainProfiler : MonoBehaviour
     {
+        [SerializeField] private bool _autoUpdate;
         [SerializeField] private TerrainCreatorType _terrainCreatorType;
         [SerializeField] private TerrainSettings _terrainSettings;
 
-        private TerrainCreator _currentCreator;
+        public bool AutoUpdate => _autoUpdate;
+        public bool Working { get; private set; }
 
-        private bool _working;
+        private TerrainCreator _currentCreator;
         private Stopwatch _stopwatch;
 
         public void Generate()
         {
+            Working = true;
+
             _currentCreator?.CleanUp();
-            _working = true;
 
             _currentCreator = GenerateNew();
             _currentCreator.SetUp();
@@ -30,7 +33,7 @@ namespace WorkSpace
             _stopwatch = Stopwatch.StartNew();
             _currentCreator.Run();
 
-            MainThreadDispatch.Instance().Enqueue(() => { _working = false; });
+            MainThreadDispatch.Instance().Enqueue(() => { Working = false; });
 
             StartCoroutine(FinishWork());
         }
@@ -62,7 +65,7 @@ namespace WorkSpace
 
         private IEnumerator FinishWork()
         {
-            while (_working)
+            while (Working)
             {
                 yield return null;
             }
