@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
 using WorkSpace.Generators;
+using WorkSpace.Generators.ECS;
 using WorkSpace.Generators.Mono;
 using WorkSpace.Settings;
 using Debug = UnityEngine.Debug;
@@ -54,6 +55,10 @@ namespace WorkSpace
                 case TerrainCreatorType.UnityJob:
                 {
                     return new UnityJobTerrainCreator(_terrainSettings);
+                }
+                case TerrainCreatorType.ECS:
+                {
+                    return new ECSTerrainCreator(_terrainSettings);
                 }
                 default:
                 {

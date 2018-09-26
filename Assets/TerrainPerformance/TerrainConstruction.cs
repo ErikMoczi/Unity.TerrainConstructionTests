@@ -8,6 +8,7 @@ using Unity.PerformanceTesting;
 using UnityEngine;
 using WorkSpace;
 using WorkSpace.Generators;
+using WorkSpace.Generators.ECS;
 using WorkSpace.Generators.Mono;
 using WorkSpace.Settings;
 using WorkSpace.Utils;
@@ -19,6 +20,7 @@ namespace TerrainPerformance
     [TestFixture(typeof(SequentialTerrainCreator))]
     [TestFixture(typeof(ParallelTerrainCreator))]
     [TestFixture(typeof(UnityJobTerrainCreator))]
+    [TestFixture(typeof(ECSTerrainCreator))]
     public class TerrainConstruction<T> where T : class, ITerrainCreator
     {
         private ITestSettings _testSettings;

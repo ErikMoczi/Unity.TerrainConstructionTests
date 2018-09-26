@@ -5,5 +5,6 @@
         Sequential,
         Parallel,
         UnityJob,
+        ECS
     }
 }
