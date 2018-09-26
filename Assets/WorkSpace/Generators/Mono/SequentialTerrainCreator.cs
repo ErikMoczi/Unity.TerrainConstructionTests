@@ -2,9 +2,9 @@ using UnityEngine;
 using WorkSpace.Settings;
 using WorkSpace.Utils;
 
-namespace WorkSpace.Generators
+namespace WorkSpace.Generators.Mono
 {
-    public class SequentialTerrainCreator : TerrainCreator
+    public sealed class SequentialTerrainCreator : TerrainCreatorMonoBehaviour
     {
         public SequentialTerrainCreator(ITerrainSettings terrainSettings) : base(terrainSettings)
         {
@@ -18,7 +18,7 @@ namespace WorkSpace.Generators
 
             for (int i = 0; i < dataSize; i++)
             {
-                MeshCreator.GridData(ref vertices, ref triangles, ref meshData, i);
+                MeshCreator.GridData(ref vertices, ref triangles, meshData, i);
             }
 
             return new Mesh {vertices = vertices, triangles = triangles};

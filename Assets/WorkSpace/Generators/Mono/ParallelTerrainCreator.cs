@@ -3,9 +3,9 @@ using UnityEngine;
 using WorkSpace.Settings;
 using WorkSpace.Utils;
 
-namespace WorkSpace.Generators
+namespace WorkSpace.Generators.Mono
 {
-    public class ParallelTerrainCreator : TerrainCreator
+    public sealed class ParallelTerrainCreator : TerrainCreatorMonoBehaviour
     {
         public ParallelTerrainCreator(ITerrainSettings terrainSettings) : base(terrainSettings)
         {
@@ -17,7 +17,7 @@ namespace WorkSpace.Generators
             var vertices = new Vector3[dataSize];
             var triangles = new int[TerrainSettings.Resolution * TerrainSettings.Resolution * 6];
 
-            Parallel.For(0, dataSize, i => { MeshCreator.GridData(ref vertices, ref triangles, ref meshData, i); });
+            Parallel.For(0, dataSize, i => { MeshCreator.GridData(ref vertices, ref triangles, meshData, i); });
 
             return new Mesh {vertices = vertices, triangles = triangles};
         }

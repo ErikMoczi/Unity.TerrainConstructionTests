@@ -2,14 +2,11 @@ using System;
 using System.Text.RegularExpressions;
 using Unity.PerformanceTesting;
 using UnityEngine;
-using WorkSpace.Settings;
 
 namespace TerrainPerformance
 {
     internal static class Utils
     {
-        public const string TestSettingsAsset = "TestSettings";
-        public const string TerrainSettingsAsset = "TerrainSettings";
         public const string FirstKeyWord = "_First";
         public const string DefinitionPrefix = "#";
         public const string PerformanceTestPrefix = "##performancetestresult:";
@@ -18,16 +15,6 @@ namespace TerrainPerformance
         public static string DefinitionName(string name, string suffix = "")
         {
             return $"{DefinitionPrefix}{name}{suffix}";
-        }
-
-        public static ITestSettings LoadTestSettings()
-        {
-            return Resources.Load<TestSettings>(TestSettingsAsset);
-        }
-
-        public static ITerrainSettings LoadTerrainSettings()
-        {
-            return Resources.Load<TerrainSettings>(TerrainSettingsAsset);
         }
 
         public static string ParsePerformanceTestData(string data)

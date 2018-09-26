@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,9 @@ using Unity.PerformanceTesting;
 using UnityEngine;
 using WorkSpace;
 using WorkSpace.Generators;
+using WorkSpace.Generators.Mono;
 using WorkSpace.Settings;
+using WorkSpace.Utils;
 using Object = UnityEngine.Object;
 
 namespace TerrainPerformance
@@ -56,8 +58,8 @@ namespace TerrainPerformance
         [SetUp]
         public void SetUp()
         {
-            _testSettings = Utils.LoadTestSettings();
-            _terrainSettings = Utils.LoadTerrainSettings();
+            _testSettings = ResourcesData.LoadTestSettings();
+            _terrainSettings = ResourcesData.LoadTerrainSettings();
             CreateMainThreadDispatch();
             _terrainCreator = InitTerrainCreator();
         }

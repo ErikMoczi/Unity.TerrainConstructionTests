@@ -6,7 +6,7 @@ using WorkSpace.Utils;
 
 namespace WorkSpace.Generators.Job
 {
-    [BurstCompile]
+    [BurstCompile(Accuracy = Accuracy.Low, Support = Support.Relaxed)]
     internal struct MeshCalculationGrid : IJobParallelForGrid, IDisposable
     {
         [WriteOnly] private NativeArray<Vector3> _vertices;
@@ -19,9 +19,9 @@ namespace WorkSpace.Generators.Job
 
         public int GridSize { get; }
 
-        [ReadOnly] private MeshData _meshData;
+        [ReadOnly] private readonly MeshData _meshData;
 
-        public MeshCalculationGrid(ref MeshData meshData) : this()
+        public MeshCalculationGrid(MeshData meshData) : this()
         {
             _meshData = meshData;
             GridSize = (meshData.Size + 1) * (meshData.Size + 1);
@@ -31,7 +31,7 @@ namespace WorkSpace.Generators.Job
 
         public void Execute(int i)
         {
-            MeshCreator.GridData(ref _vertices, ref _triangles, ref _meshData, i);
+            MeshCreator.GridData(ref _vertices, ref _triangles, _meshData, i);
         }
 
         public void Dispose()

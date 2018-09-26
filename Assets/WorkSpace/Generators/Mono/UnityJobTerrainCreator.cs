@@ -3,9 +3,9 @@ using WorkSpace.Generators.Job;
 using WorkSpace.Settings;
 using WorkSpace.Utils;
 
-namespace WorkSpace.Generators
+namespace WorkSpace.Generators.Mono
 {
-    public class UnityJobTerrainCreator : TerrainCreator
+    public sealed class UnityJobTerrainCreator : TerrainCreatorMonoBehaviour
     {
         public UnityJobTerrainCreator(ITerrainSettings terrainSettings) : base(terrainSettings)
         {
@@ -14,7 +14,7 @@ namespace WorkSpace.Generators
         protected override Mesh CreateMesh(MeshData meshData)
         {
             var mesh = new Mesh();
-            using (var meshCalculationGrid = new MeshCalculationGrid(ref meshData))
+            using (var meshCalculationGrid = new MeshCalculationGrid(meshData))
             {
                 meshCalculationGrid.Schedule(64).Complete();
                 mesh.vertices = meshCalculationGrid.Vertices.ToArray();

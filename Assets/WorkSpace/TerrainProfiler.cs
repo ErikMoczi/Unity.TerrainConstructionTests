@@ -1,15 +1,16 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
 using WorkSpace.Generators;
+using WorkSpace.Generators.Mono;
 using WorkSpace.Settings;
 using Debug = UnityEngine.Debug;
 
 namespace WorkSpace
 {
     [RequireComponent(typeof(MainThreadDispatch))]
-    public class TerrainProfiler : MonoBehaviour
+    public sealed class TerrainProfiler : MonoBehaviour
     {
         [SerializeField] private bool _autoUpdate;
         [SerializeField] private TerrainCreatorType _terrainCreatorType;
