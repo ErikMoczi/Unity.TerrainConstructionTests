@@ -31,11 +31,9 @@ namespace WorkSpace.Generators.ECS
             base.OnCreateManager();
             _terrainSettings = ResourcesData.LoadTerrainSettings();
             _meshInstanceRenderer = InitMeshInstanceRenderer(_terrainSettings.ChunkObject);
-
-            var entity = EntityManager.CreateEntity(ComponentType.Create<Position>());
             var entities = new NativeArray<Entity>(_terrainSettings.ChunkCount, Allocator.Temp);
-            EntityManager.Instantiate(entity, entities);
-            EntityManager.DestroyEntity(entity);
+            var entityArchetype = EntityManager.CreateArchetype(ComponentType.Create<Position>());
+            EntityManager.CreateEntity(entityArchetype, entities);
         }
 
         protected override void OnUpdate()
