@@ -53,6 +53,14 @@ namespace WorkSpace.Editor
                 {
                     RefreshCreator();
                 }
+                
+                if (GUILayout.Button("Clear"))
+                {
+                    if (Application.isPlaying)
+                    {
+                        _terrainProfiler.Clear();
+                    }
+                }
             }
         }
     }
