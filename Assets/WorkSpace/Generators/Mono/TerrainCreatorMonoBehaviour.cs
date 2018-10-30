@@ -7,7 +7,6 @@ namespace WorkSpace.Generators.Mono
     public abstract class TerrainCreatorMonoBehaviour : TerrainCreator
     {
         private ChunkObject[] _chunkObjects;
-        protected ChunkObject[] ChunkObjects => _chunkObjects;
 
         public TerrainCreatorMonoBehaviour(ITerrainSettings terrainSettings) : base(terrainSettings)
         {
@@ -58,7 +57,7 @@ namespace WorkSpace.Generators.Mono
 
             chunkObject.transform.position = new Vector3(position.x, 0f, position.y);
             chunkObject.MeshFilter.mesh = CreateMesh(meshData);
-            ChunkObjects[index] = chunkObject;
+            _chunkObjects[index] = chunkObject;
         }
 
         protected abstract Mesh CreateMesh(MeshData meshData);
