@@ -13,9 +13,11 @@ namespace WorkSpace
     [RequireComponent(typeof(MainThreadDispatch))]
     public sealed class TerrainProfiler : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private bool _autoUpdate;
         [SerializeField] private TerrainCreatorType _terrainCreatorType;
         [SerializeField] private TerrainSettings _terrainSettings;
+#pragma warning restore 649
 
         public bool AutoUpdate => _autoUpdate;
         public bool Working { get; private set; }
@@ -40,6 +42,13 @@ namespace WorkSpace
             StartCoroutine(FinishWork());
         }
 
+        public void Clear()
+        {
+            Working = true;
+            _currentCreator?.CleanUp();
+            Working = false;
+        }
+
         private TerrainCreator GenerateNew()
         {
             switch (_terrainCreatorType)
@@ -56,9 +65,9 @@ namespace WorkSpace
                 {
                     return new UnityJobTerrainCreator(_terrainSettings);
                 }
-                case TerrainCreatorType.ECS:
+                case TerrainCreatorType.SimpleEcs:
                 {
-                    return new ECSTerrainCreator(_terrainSettings);
+                    return new SimpleEcsTerrainCreator(_terrainSettings);
                 }
                 default:
                 {

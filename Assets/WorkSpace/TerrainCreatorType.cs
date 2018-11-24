@@ -1,10 +1,10 @@
 ﻿namespace WorkSpace
 {
-    public enum TerrainCreatorType
+    internal enum TerrainCreatorType
     {
         Sequential,
         Parallel,
         UnityJob,
-        ECS
+        SimpleEcs
     }
 }

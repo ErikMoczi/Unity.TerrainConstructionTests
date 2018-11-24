@@ -14,8 +14,10 @@ namespace WorkSpace.Settings
     {
         [SerializeField, Range(1, 255)] private int _resolution = 128;
         [SerializeField, Range(1, 10000)] private int _chunkCount = 10;
+#pragma warning disable 649
         [SerializeField] private ChunkObject _chunkObject;
         [SerializeField] private NoiseSettings _noiseSettings;
+#pragma warning restore 649
 
         public int Resolution => _resolution;
         public int ChunkCount => _chunkCount;

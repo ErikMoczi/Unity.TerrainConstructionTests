@@ -1,10 +1,10 @@
 using System;
 
-namespace TerrainPerformance
+namespace TerrainPerformance.Utils
 {
     [Serializable]
     internal class Wrapper<T>
     {
-        public T[] data;
+        public T[] Data;
     }
 }

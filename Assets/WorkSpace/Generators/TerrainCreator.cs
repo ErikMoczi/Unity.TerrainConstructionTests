@@ -4,12 +4,12 @@ namespace WorkSpace.Generators
 {
     public abstract class TerrainCreator : ITerrainCreator
     {
-        private readonly ITerrainSettings _terrainSettings;
-        protected ITerrainSettings TerrainSettings => _terrainSettings;
+        protected ITerrainSettings TerrainSettings { get; }
 
+        // ReSharper disable once PublicConstructorInAbstractClass
         public TerrainCreator(ITerrainSettings terrainSettings)
         {
-            _terrainSettings = terrainSettings;
+            TerrainSettings = terrainSettings;
         }
 
         public abstract void SetUp();

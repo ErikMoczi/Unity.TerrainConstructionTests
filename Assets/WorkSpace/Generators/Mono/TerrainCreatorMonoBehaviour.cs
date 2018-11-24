@@ -8,6 +8,7 @@ namespace WorkSpace.Generators.Mono
     {
         private ChunkObject[] _chunkObjects;
 
+        // ReSharper disable once PublicConstructorInAbstractClass
         public TerrainCreatorMonoBehaviour(ITerrainSettings terrainSettings) : base(terrainSettings)
         {
         }

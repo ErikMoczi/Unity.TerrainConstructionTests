@@ -52,7 +52,7 @@ namespace WorkSpace.Utils
             var en = r * 2;
             var a = (1 + n - p) % (r * 8);
             var pos = new Vector3(0, 0, r);
-            switch (Mathf.Floor(a / (r * 2)))
+            switch (Mathf.FloorToInt(a / (r * 2)))
             {
                 // find the face : 0 top, 1 right, 2, bottom, 3 left
                 case 0:

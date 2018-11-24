@@ -16,7 +16,7 @@ namespace WorkSpace.Generators.Mono
             var vertices = new Vector3[dataSize];
             var triangles = new int[TerrainSettings.Resolution * TerrainSettings.Resolution * 6];
 
-            for (int i = 0; i < dataSize; i++)
+            for (var i = 0; i < dataSize; i++)
             {
                 MeshCreator.GridData(ref vertices, ref triangles, meshData, i);
             }

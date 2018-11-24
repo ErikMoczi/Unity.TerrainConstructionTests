@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 
 namespace WorkSpace.Editor
@@ -20,6 +20,7 @@ namespace WorkSpace.Editor
 
         private void OnDisable()
         {
+            // ReSharper disable once DelegateSubtraction
             Undo.undoRedoPerformed -= RefreshCreator;
         }
 
@@ -53,7 +54,7 @@ namespace WorkSpace.Editor
                 {
                     RefreshCreator();
                 }
-                
+
                 if (GUILayout.Button("Clear"))
                 {
                     if (Application.isPlaying)

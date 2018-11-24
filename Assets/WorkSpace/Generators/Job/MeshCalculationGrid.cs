@@ -25,8 +25,10 @@ namespace WorkSpace.Generators.Job
         {
             _meshData = meshData;
             GridSize = (meshData.Size + 1) * (meshData.Size + 1);
-            _vertices = new NativeArray<Vector3>(GridSize, Allocator.Persistent);
-            _triangles = new NativeArray<int>(meshData.Size * meshData.Size * 6, Allocator.Persistent);
+            _vertices = new NativeArray<Vector3>(GridSize, Allocator.Persistent,
+                NativeArrayOptions.UninitializedMemory);
+            _triangles = new NativeArray<int>(meshData.Size * meshData.Size * 6, Allocator.Persistent,
+                NativeArrayOptions.UninitializedMemory);
         }
 
         public void Execute(int i)

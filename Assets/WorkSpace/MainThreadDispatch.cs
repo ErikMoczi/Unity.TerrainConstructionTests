@@ -7,7 +7,9 @@ namespace WorkSpace
 {
     public class MainThreadDispatch : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private bool _visualization;
+#pragma warning restore 649
         private static readonly Queue<Action> ExecutionQueue = new Queue<Action>();
         private static MainThreadDispatch _instance;
 

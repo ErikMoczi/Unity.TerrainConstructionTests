@@ -4,34 +4,39 @@ using Unity.Mathematics;
 using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
+using WorkSpace.Generators.ECS.Base;
 using WorkSpace.Generators.Job;
 using WorkSpace.Settings;
 using WorkSpace.Utils;
 
 namespace WorkSpace.Generators.ECS
 {
-    [DisableAutoCreation]
     [UpdateBefore(typeof(MeshInstanceRendererSystem))]
-    public sealed class TerrainSystem : ComponentSystem
+    // ReSharper disable once ClassNeverInstantiated.Global
+    internal sealed class TerrainSystem : BaseSystem
     {
-        private ITerrainSettings _terrainSettings;
         private MeshInstanceRenderer _meshInstanceRenderer;
 
+#pragma warning disable 649
         private struct Data
         {
             public readonly int Length;
             [WriteOnly] public ComponentDataArray<Position> Position;
             public EntityArray EntityArray;
         }
+#pragma warning restore 649
 
         [Inject] private Data _data;
+
+        public TerrainSystem(ITerrainSettings terrainSettings) : base(terrainSettings)
+        {
+        }
 
         protected override void OnCreateManager()
         {
             base.OnCreateManager();
-            _terrainSettings = ResourcesData.LoadTerrainSettings();
-            _meshInstanceRenderer = InitMeshInstanceRenderer(_terrainSettings.ChunkObject);
-            var entities = new NativeArray<Entity>(_terrainSettings.ChunkCount, Allocator.Temp);
+            _meshInstanceRenderer = InitMeshInstanceRenderer(TerrainSettings.ChunkObject);
+            var entities = new NativeArray<Entity>(TerrainSettings.ChunkCount, Allocator.Temp);
             var entityArchetype = EntityManager.CreateArchetype(ComponentType.Create<Position>());
             EntityManager.CreateEntity(entityArchetype, entities);
         }
@@ -46,16 +51,16 @@ namespace WorkSpace.Generators.ECS
 
         private void CreateChunk(int i)
         {
-            var position = Common.SpiralChunkPosition(i);
+            var spiralChunkPosition = Common.SpiralChunkPosition(i);
             var meshData = new MeshData(
-                _terrainSettings.Resolution,
-                position,
-                _terrainSettings.NoiseSettings
+                TerrainSettings.Resolution,
+                spiralChunkPosition,
+                TerrainSettings.NoiseSettings
             );
 
-            var item = _data.Position[i];
-            item.Value = new float3(position.x, 0f, position.y);
-            _data.Position[i] = item;
+            var position = _data.Position[i];
+            position.Value = new float3(spiralChunkPosition.x, 0f, spiralChunkPosition.y);
+            _data.Position[i] = position;
 
             PostUpdateCommands.AddSharedComponent(_data.EntityArray[i], new MeshInstanceRenderer
             {

@@ -2,6 +2,7 @@ using Unity.Jobs;
 
 namespace WorkSpace.Generators.Job
 {
+    // ReSharper disable once InconsistentNaming
     internal static class IJobParallelForGridExtensions
     {
         public static JobHandle Schedule<T>(this T jobData, int innerloopBatchCount, JobHandle dependsOn = default)

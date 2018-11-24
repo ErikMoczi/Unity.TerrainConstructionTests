@@ -1,6 +1,6 @@
 using System;
 
-namespace TerrainPerformance
+namespace TerrainPerformance.Utils
 {
     [Serializable]
     internal class TestRunnerResult

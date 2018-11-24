@@ -3,14 +3,14 @@ using System.Text.RegularExpressions;
 using Unity.PerformanceTesting;
 using UnityEngine;
 
-namespace TerrainPerformance
+namespace TerrainPerformance.Utils
 {
-    internal static class Utils
+    internal static class Common
     {
         public const string FirstKeyWord = "_First";
         public const string DefinitionPrefix = "#";
         public const string PerformanceTestPrefix = "##performancetestresult:";
-        public const string TerrainConstructionPrefix = "##terrainconstructionresult:";
+        public const string TerrainTestPrefix = "##terrainresult:";
 
         public static string DefinitionName(string name, string suffix = "")
         {
@@ -37,7 +37,7 @@ namespace TerrainPerformance
 
         public static string CreateTestRunnerResultJson(TestRunnerResult[] testRunnerResults)
         {
-            var data = new Wrapper<TestRunnerResult> {data = testRunnerResults};
+            var data = new Wrapper<TestRunnerResult> {Data = testRunnerResults};
             return JsonUtility.ToJson(data);
         }
     }
