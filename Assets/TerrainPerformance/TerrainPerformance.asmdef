@@ -2,8 +2,7 @@
     "name": "TerrainPerformance",
     "references": [
         "Unity.PerformanceTesting",
-        "WorkSpace",
-        "Unity.Mathematics"
+        "WorkSpace"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"

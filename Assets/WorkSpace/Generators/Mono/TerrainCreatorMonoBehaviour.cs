@@ -61,6 +61,6 @@ namespace WorkSpace.Generators.Mono
             _chunkObjects[index] = chunkObject;
         }
 
-        protected abstract Mesh CreateMesh(MeshData meshData);
+        private protected abstract Mesh CreateMesh(MeshData meshData);
     }
 }

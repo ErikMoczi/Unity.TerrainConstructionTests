@@ -11,7 +11,7 @@ namespace WorkSpace.Generators.Mono
         {
         }
 
-        protected override Mesh CreateMesh(MeshData meshData)
+        private protected override Mesh CreateMesh(MeshData meshData)
         {
             var mesh = new Mesh();
             using (var meshCalculationGrid = new MeshCalculationGrid(meshData))

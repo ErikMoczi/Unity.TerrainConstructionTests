@@ -11,7 +11,8 @@ namespace WorkSpace.Generators.Job
             return jobData.Schedule(jobData.GridSize, innerloopBatchCount, dependsOn);
         }
 
-        public static void Run<T>(this T jobData) where T : struct, IJobParallelForGrid
+        public static void Run<T>(this T jobData)
+            where T : struct, IJobParallelForGrid
         {
             jobData.Run(jobData.GridSize);
         }

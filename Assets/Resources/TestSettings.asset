@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a89fb3372cd4b4db1f94ff3a11befb, type: 3}
   m_Name: TestSettings
   m_EditorClassIdentifier: 
-  _totalRuns: 10
+  _totalRuns: 25
   _warmUpCount: 3
   _resultsPrecision: 4
   _sampleUnit: 2

@@ -3,7 +3,7 @@ using WorkSpace.Settings;
 
 namespace WorkSpace.Utils
 {
-    public struct MeshData
+    internal struct MeshData
     {
         public int Size { get; }
         public float StepSize { get; }

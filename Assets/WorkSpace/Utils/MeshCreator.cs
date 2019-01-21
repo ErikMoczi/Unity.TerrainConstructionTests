@@ -1,4 +1,5 @@
 ﻿using Unity.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using WorkSpace.Settings;
 
@@ -43,29 +44,29 @@ namespace WorkSpace.Utils
             Triangle(ref triangles, index, meshData.Size, position);
         }
 
-        public static void GridData(ref Vector3[] vertices, ref int[] triangles, MeshData meshData, int index)
+        public static void GridData(Vector3[] vertices, int[] triangles, MeshData meshData, int index)
         {
             var position = Position(index, meshData.Size);
             vertices[index] = Vertex(meshData.StepSize, position, meshData.Offset, meshData.NoiseSettings);
-            Triangle(ref triangles, index, meshData.Size, position);
+            Triangle(triangles, index, meshData.Size, position);
         }
 
-        public static Vector2Int Position(int index, int size)
+        private static int2 Position(int index, int size)
         {
-            return new Vector2Int(
+            return math.int2(
                 index % (size + 1),
                 index / (size + 1)
             );
         }
 
-        public static Vector3 Vertex(float stepSize, Vector2Int position, Vector2 offset, NoiseSettings noiseSettings)
+        private static float3 Vertex(float stepSize, int2 position, Vector2 offset, NoiseSettings noiseSettings)
         {
             var point = Common.MiddlePosition(position.x, position.y, stepSize, offset);
             var noiseValue = Common.NoiseValue(point, noiseSettings);
-            return new Vector3(position.x * stepSize - 0.5f, noiseValue, position.y * stepSize - 0.5f);
+            return math.float3(position.x * stepSize - 0.5f, noiseValue, position.y * stepSize - 0.5f);
         }
 
-        public static void Triangle(ref int[] triangles, int index, int size, Vector2Int position)
+        private static void Triangle(int[] triangles, int index, int size, int2 position)
         {
             if (position.x < size && position.y < size)
             {
@@ -79,7 +80,7 @@ namespace WorkSpace.Utils
             }
         }
 
-        public static void Triangle(ref NativeArray<int> triangles, int index, int size, Vector2Int position)
+        private static void Triangle(ref NativeArray<int> triangles, int index, int size, int2 position)
         {
             if (position.x < size && position.y < size)
             {

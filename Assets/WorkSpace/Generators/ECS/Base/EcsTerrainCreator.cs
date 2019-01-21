@@ -13,8 +13,8 @@ namespace WorkSpace.Generators.ECS.Base
         protected sealed override void DefineRunSystems(IEcsSystemProxy system)
         {
             base.DefineRunSystems(system);
-            DefineSystems(system);
             system.Init<RenderingSystemBootstrap>(false);
+            DefineSystems(system);
             system.Init<EndFrameTransformSystem>();
         }
 

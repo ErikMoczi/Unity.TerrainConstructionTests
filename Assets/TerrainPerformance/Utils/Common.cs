@@ -7,6 +7,7 @@ namespace TerrainPerformance.Utils
 {
     internal static class Common
     {
+        private const string TestSettingsAsset = "TestSettings";
         public const string FirstKeyWord = "_First";
         public const string DefinitionPrefix = "#";
         public const string PerformanceTestPrefix = "##performancetestresult:";
@@ -28,6 +29,11 @@ namespace TerrainPerformance.Utils
             throw new Exception(
                 $"Problem with parsing performance test data, check Unity API {typeof(PerformanceTest)}"
             );
+        }
+        
+        public static ITestSettings LoadTestSettings()
+        {
+            return Resources.Load<TestSettings>(TestSettingsAsset);
         }
 
         public static PerformanceTest GetPerformanceTest(string jsonData)

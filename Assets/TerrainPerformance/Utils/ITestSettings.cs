@@ -1,6 +1,6 @@
 using Unity.PerformanceTesting;
 
-namespace WorkSpace.Settings
+namespace TerrainPerformance.Utils
 {
     public interface ITestSettings
     {

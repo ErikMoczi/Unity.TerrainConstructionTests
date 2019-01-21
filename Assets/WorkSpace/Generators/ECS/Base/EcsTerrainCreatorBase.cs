@@ -8,7 +8,7 @@ namespace WorkSpace.Generators.ECS.Base
     {
         protected interface IEcsSystemProxy
         {
-            void Init<T>(bool runUpdate = true, params object[] constructorArguments) where T : ComponentSystemBase;
+            T Init<T>(bool runUpdate = true, params object[] constructorArguments) where T : ComponentSystemBase;
         }
 
         #region EcsSystemProxy
@@ -23,7 +23,7 @@ namespace WorkSpace.Generators.ECS.Base
         {
             private readonly List<ComponentSystemBase> _systems = new List<ComponentSystemBase>();
 
-            public void Init<T>(bool runUpdate = true, params object[] constructorArguments)
+            public T Init<T>(bool runUpdate = true, params object[] constructorArguments)
                 where T : ComponentSystemBase
             {
                 var system = World.Active.CreateManager<T>(constructorArguments);
@@ -32,6 +32,8 @@ namespace WorkSpace.Generators.ECS.Base
                 {
                     _systems.Add(system);
                 }
+
+                return system;
             }
 
             public void Run()
@@ -86,6 +88,8 @@ namespace WorkSpace.Generators.ECS.Base
         {
             InitEcs();
             _system.Run();
+
+            ScriptBehaviourUpdateOrder.UpdatePlayerLoop(World.Active);
         }
 
         private void InitEcs()
@@ -96,8 +100,6 @@ namespace WorkSpace.Generators.ECS.Base
             }
 
             DefineRunSystems(_system);
-
-            ScriptBehaviourUpdateOrder.UpdatePlayerLoop(World.Active);
         }
 
         protected virtual void DefineSetUpSystems(IEcsSystemProxy system)

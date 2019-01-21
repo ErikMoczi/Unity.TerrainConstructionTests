@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_GeneratorAsset: {fileID: 0}
   m_Script: {fileID: 11500000, guid: bce825f22d6882d4493bc14424e62cd7, type: 3}
   m_Name: TerrainSettings
   m_EditorClassIdentifier: 
-  _resolution: 128
-  _chunkCount: 25
-  _chunkObject: {fileID: 7602828364024112973, guid: ed7bde09f835f2c40af7973aacf417a6,
+  resolution: 128
+  chunkCount: 25
+  chunkObject: {fileID: 7602828364024112973, guid: ed7bde09f835f2c40af7973aacf417a6,
     type: 3}
-  _noiseSettings:
-    _frequency: 1.5
-    _octaves: 7
-    _lacunarity: 3.5
-    _persistence: 0.17
-    _amplitude: 0.6
+  noiseSettings:
+    frequency: 1.5
+    octaves: 7
+    lacunarity: 3.5
+    persistence: 0.17
+    amplitude: 0.6

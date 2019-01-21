@@ -10,7 +10,7 @@ namespace WorkSpace.Generators.Mono
         {
         }
 
-        protected override Mesh CreateMesh(MeshData meshData)
+        private protected override Mesh CreateMesh(MeshData meshData)
         {
             var dataSize = (TerrainSettings.Resolution + 1) * (TerrainSettings.Resolution + 1);
             var vertices = new Vector3[dataSize];
@@ -18,7 +18,7 @@ namespace WorkSpace.Generators.Mono
 
             for (var i = 0; i < dataSize; i++)
             {
-                MeshCreator.GridData(ref vertices, ref triangles, meshData, i);
+                MeshCreator.GridData(vertices, triangles, meshData, i);
             }
 
             return new Mesh {vertices = vertices, triangles = triangles};

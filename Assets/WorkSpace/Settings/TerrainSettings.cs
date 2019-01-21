@@ -12,16 +12,21 @@ namespace WorkSpace.Settings
 #endif
         , ITerrainSettings
     {
-        [SerializeField, Range(1, 255)] private int _resolution = 128;
-        [SerializeField, Range(1, 10000)] private int _chunkCount = 10;
+        private const int MaxChunks = 100;
+        private const int MaxResolution = 255;
+
+        [SerializeField, Range(1, MaxResolution)]
+        private int resolution = 128;
+
+        [SerializeField, Range(1, MaxChunks)] private int chunkCount = 10;
 #pragma warning disable 649
-        [SerializeField] private ChunkObject _chunkObject;
-        [SerializeField] private NoiseSettings _noiseSettings;
+        [SerializeField] private ChunkObject chunkObject;
+        [SerializeField] private NoiseSettings noiseSettings;
 #pragma warning restore 649
 
-        public int Resolution => _resolution;
-        public int ChunkCount => _chunkCount;
-        public ChunkObject ChunkObject => _chunkObject;
-        public NoiseSettings NoiseSettings => _noiseSettings;
+        public int Resolution => resolution;
+        public int ChunkCount => chunkCount;
+        public ChunkObject ChunkObject => chunkObject;
+        public NoiseSettings NoiseSettings => noiseSettings;
     }
 }

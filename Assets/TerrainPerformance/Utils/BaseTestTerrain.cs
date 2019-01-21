@@ -57,9 +57,10 @@ namespace TerrainPerformance.Utils
 //        PerformanceTest running only with IEnumerator SetUp/TearDown
 //        return new PerformanceTestCommand(new EnumerableSetUpTearDownCommand(new SetUpTearDownCommand(new UnityLogCheckDelegatingCommand(new EnumerableTestMethodCommand((TestMethod)command.Test)))));
         [UnitySetUp]
+        // ReSharper disable once UnusedMember.Global
         public IEnumerator SetUp()
         {
-            TestSettings = ResourcesData.LoadTestSettings();
+            TestSettings = Common.LoadTestSettings();
             TerrainSettings = ResourcesData.LoadTerrainSettings();
             TerrainCreator = InitTerrainCreator();
             SetUpAdditional();
@@ -72,6 +73,7 @@ namespace TerrainPerformance.Utils
 
 //        Problem with [UnityTest] - IEnumerator, missing result data in TestContext.CurrentTestExecutionContext.CurrentResult.Output
 //        [UnityTearDown]
+        // ReSharper disable once UnusedMember.Global
         public IEnumerator TearDown()
         {
             var context = TestContext.CurrentTestExecutionContext;

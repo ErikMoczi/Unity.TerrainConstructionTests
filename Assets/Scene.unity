@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-    m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -188,8 +187,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13309721}
-  m_LocalRotation: {x: -0.13618124, y: 0.8544339, z: -0.41623196, w: -0.2795504}
-  m_LocalPosition: {x: 15.586198, y: 25.498526, z: 21.43405}
+  m_LocalRotation: {x: 0.14516442, y: -0.8359822, z: 0.45814732, w: 0.26488143}
+  m_LocalPosition: {x: 2.5095444, y: 5.169613, z: 3.1897163}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -222,7 +221,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1834008040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_GeneratorAsset: {fileID: 0}
   m_Script: {fileID: 11500000, guid: f1cb763f5e1128b41bcfabaf7fdd2b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -238,7 +236,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1834008040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_GeneratorAsset: {fileID: 0}
   m_Script: {fileID: 11500000, guid: 4526a02db1f77004c9b21d725b19eade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -282,13 +279,12 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876892763}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2

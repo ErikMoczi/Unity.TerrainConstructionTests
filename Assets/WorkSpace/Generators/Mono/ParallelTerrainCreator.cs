@@ -11,13 +11,13 @@ namespace WorkSpace.Generators.Mono
         {
         }
 
-        protected override Mesh CreateMesh(MeshData meshData)
+        private protected override Mesh CreateMesh(MeshData meshData)
         {
             var dataSize = (TerrainSettings.Resolution + 1) * (TerrainSettings.Resolution + 1);
             var vertices = new Vector3[dataSize];
             var triangles = new int[TerrainSettings.Resolution * TerrainSettings.Resolution * 6];
 
-            Parallel.For(0, dataSize, i => { MeshCreator.GridData(ref vertices, ref triangles, meshData, i); });
+            Parallel.For(0, dataSize, i => { MeshCreator.GridData(vertices, triangles, meshData, i); });
 
             return new Mesh {vertices = vertices, triangles = triangles};
         }

@@ -12,9 +12,10 @@ namespace WorkSpace.Editor
             if (property.objectReferenceValue != null)
             {
                 var serializedObject = new SerializedObject(property.objectReferenceValue as TerrainSettings);
-                var resolution = serializedObject.FindProperty("_resolution");
-                var chunkCount = serializedObject.FindProperty("_chunkCount");
-                var noiseSettings = serializedObject.FindProperty("_noiseSettings");
+                var resolution = serializedObject.FindProperty("resolution");
+                var chunkCount = serializedObject.FindProperty("chunkCount");
+                var noiseSettings = serializedObject.FindProperty("noiseSettings");
+                var scale = serializedObject.FindProperty("scale");
 
                 if (resolution != null)
                 {
@@ -40,6 +41,16 @@ namespace WorkSpace.Editor
                 {
                     EditorGUI.BeginChangeCheck();
                     EditorGUILayout.PropertyField(noiseSettings, true);
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        serializedObject.ApplyModifiedProperties();
+                    }
+                }
+
+                if (scale != null)
+                {
+                    EditorGUI.BeginChangeCheck();
+                    EditorGUILayout.PropertyField(scale);
                     if (EditorGUI.EndChangeCheck())
                     {
                         serializedObject.ApplyModifiedProperties();

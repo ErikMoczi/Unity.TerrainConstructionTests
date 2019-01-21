@@ -42,17 +42,17 @@ namespace WorkSpace.Utils
             return Vector2.Lerp(point0, point1, x * stepSize);
         }
 
-        public static Vector2 SpiralChunkPosition(int n)
+        public static float2 SpiralChunkPosition(int n)
         {
 //            https://stackoverflow.com/questions/398299/looping-in-a-spiral
-            if (n == 0) return new Vector3(0, 0, 0);
+            if (n == 0) return math.float2(0f);
             --n;
-            var r = Mathf.Floor((Mathf.Sqrt(n + 1) - 1) / 2) + 1;
+            var r = math.floor((math.sqrt(n + 1) - 1) / 2) + 1;
             var p = (8 * r * (r - 1)) / 2;
             var en = r * 2;
             var a = (1 + n - p) % (r * 8);
             var pos = new Vector3(0, 0, r);
-            switch (Mathf.FloorToInt(a / (r * 2)))
+            switch ((int) math.floor(a / (r * 2)))
             {
                 // find the face : 0 top, 1 right, 2, bottom, 3 left
                 case 0:
@@ -81,7 +81,7 @@ namespace WorkSpace.Utils
                 }
             }
 
-            return pos;
+            return math.float2(pos.x, pos.y);
         }
     }
 }
