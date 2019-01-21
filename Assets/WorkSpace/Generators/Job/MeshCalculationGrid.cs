@@ -6,7 +6,7 @@ using WorkSpace.Utils;
 
 namespace WorkSpace.Generators.Job
 {
-    [BurstCompile(Accuracy = Accuracy.Low, Support = Support.Relaxed)]
+    [BurstCompile]
     internal struct MeshCalculationGrid : IJobParallelForGrid, IDisposable
     {
         [WriteOnly] private NativeArray<Vector3> _vertices;

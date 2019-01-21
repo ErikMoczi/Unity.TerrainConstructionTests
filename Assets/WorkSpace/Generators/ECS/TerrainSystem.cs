@@ -11,11 +11,11 @@ using WorkSpace.Utils;
 
 namespace WorkSpace.Generators.ECS
 {
-    [UpdateBefore(typeof(MeshInstanceRendererSystem))]
+    [UpdateBefore(typeof(RenderMeshSystem))]
     // ReSharper disable once ClassNeverInstantiated.Global
     internal sealed class TerrainSystem : BaseSystem
     {
-        private MeshInstanceRenderer _meshInstanceRenderer;
+        private RenderMesh _renderMesh;
 
 #pragma warning disable 649
         private struct Data
@@ -35,7 +35,7 @@ namespace WorkSpace.Generators.ECS
         protected override void OnCreateManager()
         {
             base.OnCreateManager();
-            _meshInstanceRenderer = InitMeshInstanceRenderer(TerrainSettings.ChunkObject);
+            _renderMesh = InitRenderMesh(TerrainSettings.ChunkObject);
             var entities = new NativeArray<Entity>(TerrainSettings.ChunkCount, Allocator.Temp);
             var entityArchetype = EntityManager.CreateArchetype(ComponentType.Create<Position>());
             EntityManager.CreateEntity(entityArchetype, entities);
@@ -62,13 +62,13 @@ namespace WorkSpace.Generators.ECS
             position.Value = new float3(spiralChunkPosition.x, 0f, spiralChunkPosition.y);
             _data.Position[i] = position;
 
-            PostUpdateCommands.AddSharedComponent(_data.EntityArray[i], new MeshInstanceRenderer
+            PostUpdateCommands.AddSharedComponent(_data.EntityArray[i], new RenderMesh
             {
                 mesh = CreateMesh(meshData),
-                castShadows = _meshInstanceRenderer.castShadows,
-                material = _meshInstanceRenderer.material,
-                receiveShadows = _meshInstanceRenderer.receiveShadows,
-                subMesh = _meshInstanceRenderer.subMesh
+                castShadows = _renderMesh.castShadows,
+                material = _renderMesh.material,
+                receiveShadows = _renderMesh.receiveShadows,
+                subMesh = _renderMesh.subMesh
             });
         }
 
@@ -85,10 +85,10 @@ namespace WorkSpace.Generators.ECS
             return mesh;
         }
 
-        private static MeshInstanceRenderer InitMeshInstanceRenderer(ChunkObject chunkObject)
+        private static RenderMesh InitRenderMesh(ChunkObject chunkObject)
         {
             var meshRenderer = chunkObject.GetComponent<MeshRenderer>();
-            return new MeshInstanceRenderer
+            return new RenderMesh
             {
                 material = meshRenderer.sharedMaterial,
                 castShadows = meshRenderer.shadowCastingMode,
