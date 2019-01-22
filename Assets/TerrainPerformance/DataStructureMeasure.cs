@@ -17,25 +17,19 @@ namespace TerrainPerformance
 
     #region MultipleLongArrays
 
-    [TestFixture(
-        typeof(MeasureAllSystems<CreateMultipleLongArraysSystem, InitDataMultipleLongArraysSystem,
-            IterateMultipleLongArraysSystem>))]
+    [TestFixture(typeof(MeasureAllSystems<CreateMultipleLongArraysSystem, InitDataMultipleLongArraysSystem, IterateMultipleLongArraysSystem>))]
     [TestFixture(typeof(MeasureCreateSystem<CreateMultipleLongArraysSystem>))]
     [TestFixture(typeof(MeasureInitDataSystem<CreateMultipleLongArraysSystem, InitDataMultipleLongArraysSystem>))]
-    [TestFixture(
-        typeof(MeasureIterateSystem<CreateMultipleLongArraysSystem, InitDataMultipleLongArraysSystem,
-            IterateMultipleLongArraysSystem>))]
+    [TestFixture(typeof(MeasureIterateSystem<CreateMultipleLongArraysSystem, InitDataMultipleLongArraysSystem, IterateMultipleLongArraysSystem>))]
 
     #endregion
 
     #region MultipleJobs
 
-    [TestFixture(
-        typeof(MeasureAllSystems<CreateMultipleJobsSystem, InitDataMultipleJobsSystem, IterateMultipleJobsSystem>))]
+    [TestFixture(typeof(MeasureAllSystems<CreateMultipleJobsSystem, InitDataMultipleJobsSystem, IterateMultipleJobsSystem>))]
     [TestFixture(typeof(MeasureCreateSystem<CreateMultipleJobsSystem>))]
     [TestFixture(typeof(MeasureInitDataSystem<CreateMultipleJobsSystem, InitDataMultipleJobsSystem>))]
-    [TestFixture(
-        typeof(MeasureIterateSystem<CreateMultipleJobsSystem, InitDataMultipleJobsSystem, IterateMultipleJobsSystem>))]
+    [TestFixture(typeof(MeasureIterateSystem<CreateMultipleJobsSystem, InitDataMultipleJobsSystem, IterateMultipleJobsSystem>))]
 
     #endregion
 
@@ -50,37 +44,28 @@ namespace TerrainPerformance
 
     #region MassivePoints
 
-    [TestFixture(
-        typeof(MeasureAllSystems<CreateMassivePointsSystem, InitDataMassivePointsSystem, IterateMassivePointsSystem>))]
+    [TestFixture(typeof(MeasureAllSystems<CreateMassivePointsSystem, InitDataMassivePointsSystem, IterateMassivePointsSystem>))]
     [TestFixture(typeof(MeasureCreateSystem<CreateMassivePointsSystem>))]
     [TestFixture(typeof(MeasureInitDataSystem<CreateMassivePointsSystem, InitDataMassivePointsSystem>))]
-    [TestFixture(
-        typeof(MeasureIterateSystem<CreateMassivePointsSystem, InitDataMassivePointsSystem, IterateMassivePointsSystem
-        >))]
+    [TestFixture(typeof(MeasureIterateSystem<CreateMassivePointsSystem, InitDataMassivePointsSystem, IterateMassivePointsSystem>))]
 
     #endregion
 
     #region SinglePoints
 
-    [TestFixture(
-        typeof(MeasureAllSystems<CreateSinglePointsSystem, InitDataSinglePointsSystem, IterateSinglePointsSystem>))]
+    [TestFixture(typeof(MeasureAllSystems<CreateSinglePointsSystem, InitDataSinglePointsSystem, IterateSinglePointsSystem>))]
     [TestFixture(typeof(MeasureCreateSystem<CreateSinglePointsSystem>))]
     [TestFixture(typeof(MeasureInitDataSystem<CreateSinglePointsSystem, InitDataSinglePointsSystem>))]
-    [TestFixture(
-        typeof(MeasureIterateSystem<CreateSinglePointsSystem, InitDataSinglePointsSystem, IterateSinglePointsSystem>))]
+    [TestFixture(typeof(MeasureIterateSystem<CreateSinglePointsSystem, InitDataSinglePointsSystem, IterateSinglePointsSystem>))]
 
     #endregion
 
     #region SingleLongArray
 
-    [TestFixture(
-        typeof(MeasureAllSystems<CreateSingleLongArraySystem, InitDataSingleLongArraySystem,
-            IterateSingleLongArraySystem>))]
+    [TestFixture(typeof(MeasureAllSystems<CreateSingleLongArraySystem, InitDataSingleLongArraySystem, IterateSingleLongArraySystem>))]
     [TestFixture(typeof(MeasureCreateSystem<CreateSingleLongArraySystem>))]
     [TestFixture(typeof(MeasureInitDataSystem<CreateSingleLongArraySystem, InitDataSingleLongArraySystem>))]
-    [TestFixture(
-        typeof(MeasureIterateSystem<CreateSingleLongArraySystem, InitDataSingleLongArraySystem,
-            IterateSingleLongArraySystem>))]
+    [TestFixture(typeof(MeasureIterateSystem<CreateSingleLongArraySystem, InitDataSingleLongArraySystem, IterateSingleLongArraySystem>))]
 
     #endregion
 
