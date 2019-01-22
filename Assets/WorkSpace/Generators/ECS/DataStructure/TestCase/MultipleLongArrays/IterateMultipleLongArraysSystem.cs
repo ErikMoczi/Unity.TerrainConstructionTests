@@ -4,7 +4,6 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using WorkSpace.Generators.ECS.DataStructure.Measuring.Systems;
-using WorkSpace.Settings;
 
 namespace WorkSpace.Generators.ECS.DataStructure.TestCase.MultipleLongArrays
 {
@@ -38,10 +37,6 @@ namespace WorkSpace.Generators.ECS.DataStructure.TestCase.MultipleLongArrays
 
         private ComponentGroup _group;
 
-        public IterateMultipleLongArraysSystem(ITerrainSettings terrainSettings) : base(terrainSettings)
-        {
-        }
-
         protected override void OnCreateManager()
         {
             base.OnCreateManager();
@@ -55,7 +50,7 @@ namespace WorkSpace.Generators.ECS.DataStructure.TestCase.MultipleLongArrays
             {
                 Chunks = chunks,
                 DataComponent = GetArchetypeChunkBufferType<DataComponent>(),
-            }.Schedule(chunks.Length, 64).Complete();
+            }.Schedule(chunks.Length, 1).Complete();
         }
     }
 }

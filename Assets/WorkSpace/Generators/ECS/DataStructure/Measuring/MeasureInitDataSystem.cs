@@ -14,13 +14,13 @@ namespace WorkSpace.Generators.ECS.DataStructure.Measuring
         protected override void DefineSetUpSystems(IEcsSystemProxy system)
         {
             base.DefineSetUpSystems(system);
-            system.Init<TCreateSystem>(false, TerrainSettings);
+            system.Init<TCreateSystem>(false);
         }
 
         protected override void DefineRunSystems(IEcsSystemProxy system)
         {
             base.DefineRunSystems(system);
-            system.Init<TInitDataSystem>(constructorArguments: TerrainSettings);
+            system.Init<TInitDataSystem>();
         }
     }
 }

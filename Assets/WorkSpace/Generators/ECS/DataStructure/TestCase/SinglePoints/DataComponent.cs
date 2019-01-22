@@ -1,9 +1,10 @@
 using Unity.Entities;
 using Unity.Mathematics;
+using WorkSpace.Generators.ECS.DataStructure.Measuring;
 
 namespace WorkSpace.Generators.ECS.DataStructure.TestCase.SinglePoints
 {
-    [InternalBufferCapacity(Settings.ArrayChunkCount)]
+    [InternalBufferCapacity(SetUpData.ChunkCount)]
     internal struct DataComponent : IBufferElementData
     {
         // ReSharper disable once MemberCanBePrivate.Global

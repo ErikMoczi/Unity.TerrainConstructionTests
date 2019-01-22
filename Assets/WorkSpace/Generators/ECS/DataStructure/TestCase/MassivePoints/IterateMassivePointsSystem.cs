@@ -4,7 +4,6 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using WorkSpace.Generators.ECS.DataStructure.Measuring.Systems;
-using WorkSpace.Settings;
 
 namespace WorkSpace.Generators.ECS.DataStructure.TestCase.MassivePoints
 {
@@ -34,10 +33,6 @@ namespace WorkSpace.Generators.ECS.DataStructure.TestCase.MassivePoints
 
         private ComponentGroup _group;
 
-        public IterateMassivePointsSystem(ITerrainSettings terrainSettings) : base(terrainSettings)
-        {
-        }
-
         protected override void OnCreateManager()
         {
             base.OnCreateManager();
@@ -51,7 +46,7 @@ namespace WorkSpace.Generators.ECS.DataStructure.TestCase.MassivePoints
             {
                 Chunks = chunks,
                 DataComponent = GetArchetypeChunkComponentType<DataComponent>(),
-            }.Schedule(chunks.Length, 64).Complete();
+            }.Schedule(chunks.Length, 1).Complete();
         }
     }
 }

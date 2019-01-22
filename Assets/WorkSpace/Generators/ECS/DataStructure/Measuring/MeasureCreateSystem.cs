@@ -13,7 +13,7 @@ namespace WorkSpace.Generators.ECS.DataStructure.Measuring
         protected override void DefineRunSystems(IEcsSystemProxy system)
         {
             base.DefineRunSystems(system);
-            system.Init<TCreateSystem>(false, TerrainSettings);
+            system.Init<TCreateSystem>(false);
         }
     }
 }

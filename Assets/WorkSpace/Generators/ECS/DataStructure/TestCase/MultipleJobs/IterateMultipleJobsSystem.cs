@@ -4,8 +4,8 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
+using WorkSpace.Generators.ECS.DataStructure.Measuring;
 using WorkSpace.Generators.ECS.DataStructure.Measuring.Systems;
-using WorkSpace.Settings;
 
 namespace WorkSpace.Generators.ECS.DataStructure.TestCase.MultipleJobs
 {
@@ -31,10 +31,6 @@ namespace WorkSpace.Generators.ECS.DataStructure.TestCase.MultipleJobs
 
         private ComponentGroup _group;
 
-        public IterateMultipleJobsSystem(ITerrainSettings terrainSettings) : base(terrainSettings)
-        {
-        }
-
         protected override void OnCreateManager()
         {
             base.OnCreateManager();
@@ -44,7 +40,7 @@ namespace WorkSpace.Generators.ECS.DataStructure.TestCase.MultipleJobs
         protected override void OnUpdate()
         {
             var chunks = _group.CreateArchetypeChunkArray(Allocator.TempJob);
-            var jobHandles = new NativeArray<JobHandle>(TerrainSettings.ChunkCount, Allocator.Persistent);
+            var jobHandles = new NativeArray<JobHandle>(SetUpData.ChunkCount, Allocator.Persistent);
             var archetypeDataComponent = GetArchetypeChunkBufferType<DataComponent>();
             var counter = 0;
 
@@ -59,7 +55,7 @@ namespace WorkSpace.Generators.ECS.DataStructure.TestCase.MultipleJobs
                     jobHandles[counter] = new Job
                     {
                         DataComponent = (DataComponent*) dataComponent.GetUnsafePtr(),
-                    }.Schedule(dataComponent.Length, 64);
+                    }.Schedule(dataComponent.Length, SetUpData.BatchCountMultipleJobs);
                     counter++;
                 }
             }

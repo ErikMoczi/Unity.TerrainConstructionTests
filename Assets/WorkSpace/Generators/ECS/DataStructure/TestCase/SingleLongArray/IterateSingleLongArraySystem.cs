@@ -2,8 +2,8 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
+using WorkSpace.Generators.ECS.DataStructure.Measuring;
 using WorkSpace.Generators.ECS.DataStructure.Measuring.Systems;
-using WorkSpace.Settings;
 
 namespace WorkSpace.Generators.ECS.DataStructure.TestCase.SingleLongArray
 {
@@ -25,16 +25,12 @@ namespace WorkSpace.Generators.ECS.DataStructure.TestCase.SingleLongArray
 
         #endregion
 
-        public IterateSingleLongArraySystem(ITerrainSettings terrainSettings) : base(terrainSettings)
-        {
-        }
-
         protected override void OnUpdate()
         {
             new Job
             {
                 Data = CreateSingleLongArraySystem.Data,
-            }.Schedule(CreateSingleLongArraySystem.Data.Length, 64).Complete();
+            }.Schedule(CreateSingleLongArraySystem.Data.Length, SetUpData.BatchCountLongArray).Complete();
         }
     }
 }

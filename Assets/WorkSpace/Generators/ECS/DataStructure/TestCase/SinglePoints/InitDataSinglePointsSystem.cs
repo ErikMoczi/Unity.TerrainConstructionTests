@@ -2,8 +2,8 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
+using WorkSpace.Generators.ECS.DataStructure.Measuring;
 using WorkSpace.Generators.ECS.DataStructure.Measuring.Systems;
-using WorkSpace.Settings;
 
 namespace WorkSpace.Generators.ECS.DataStructure.TestCase.SinglePoints
 {
@@ -34,10 +34,6 @@ namespace WorkSpace.Generators.ECS.DataStructure.TestCase.SinglePoints
 
         private ComponentGroup _group;
 
-        public InitDataSinglePointsSystem(ITerrainSettings terrainSettings) : base(terrainSettings)
-        {
-        }
-
         protected override void OnCreateManager()
         {
             base.OnCreateManager();
@@ -51,8 +47,8 @@ namespace WorkSpace.Generators.ECS.DataStructure.TestCase.SinglePoints
             {
                 Chunks = chunks,
                 DataComponent = GetArchetypeChunkBufferType<DataComponent>(),
-                Size = Settings.ArrayChunkCount,
-            }.Schedule(chunks.Length, 64).Complete();
+                Size = SetUpData.ChunkCount,
+            }.Schedule(chunks.Length, 1).Complete();
         }
     }
 }

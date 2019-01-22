@@ -1,9 +1,10 @@
 using Unity.Entities;
 using Unity.Mathematics;
+using WorkSpace.Generators.ECS.DataStructure.Measuring;
 
 namespace WorkSpace.Generators.ECS.DataStructure.TestCase.Caching
 {
-    [InternalBufferCapacity(Settings.ArraySizeCached)]
+    [InternalBufferCapacity(SetUpData.ArraySizeCached)]
     internal struct DataComponent : IBufferElementData
     {
         // ReSharper disable once MemberCanBePrivate.Global

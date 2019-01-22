@@ -1,15 +1,7 @@
-using WorkSpace.Generators.ECS.Base;
-using WorkSpace.Settings;
-
 namespace WorkSpace.Generators.ECS.DataStructure.Measuring.Systems
 {
-    public abstract class CreateSystem : BaseSystem
+    public abstract class CreateSystem : BaseMeasuringSystem
     {
-        // ReSharper disable once PublicConstructorInAbstractClass
-        public CreateSystem(ITerrainSettings terrainSettings) : base(terrainSettings)
-        {
-        }
-
         protected sealed override void OnUpdate()
         {
         }
