@@ -82,6 +82,8 @@ namespace WorkSpace.Generators.ECS.Base
         {
             _system.Clear();
             World.DisposeAllWorlds();
+            
+            ScriptBehaviourUpdateOrder.UpdatePlayerLoop(World.Active);
         }
 
         public sealed override void Run()

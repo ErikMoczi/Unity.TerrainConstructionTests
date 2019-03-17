@@ -11,7 +11,7 @@ using WorkSpace.Utils;
 
 namespace WorkSpace.Generators.ECS
 {
-    [UpdateBefore(typeof(RenderMeshSystem))]
+    [UpdateBefore(typeof(RenderMeshSystemV2))]
     // ReSharper disable once ClassNeverInstantiated.Global
     internal sealed class TerrainSystem : BaseSystem
     {

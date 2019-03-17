@@ -13,9 +13,11 @@ namespace WorkSpace.Generators.ECS.Base
         protected sealed override void DefineRunSystems(IEcsSystemProxy system)
         {
             base.DefineRunSystems(system);
-            system.Init<RenderingSystemBootstrap>(false);
             DefineSystems(system);
+            system.Init<RenderMeshSystemV2>();
             system.Init<EndFrameTransformSystem>();
+            system.Init<CreateMissingRenderBoundsFromMeshRenderer>();
+            system.Init<RenderBoundsUpdateSystem>();
         }
 
         protected sealed override void DefineSetUpSystems(IEcsSystemProxy system)
